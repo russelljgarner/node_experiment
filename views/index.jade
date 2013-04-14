@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to  #{title}
+  script(src="http://10.0.1.50:8086/socket.io/socket.io.js")
+  script
+      var socket = io.connect('http://10.0.1.50:8086');
+      socket.on('news', function (data) {
+            console.log(data);
+      socket.emit('my other event', { my: document.title });
+        });
